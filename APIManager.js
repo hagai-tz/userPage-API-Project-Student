@@ -1,4 +1,4 @@
-//This is the class that will manage all your APIs
+// //This is the class that will manage all your APIs
 
 class APIManager {
     constructor() {
@@ -15,9 +15,9 @@ class APIManager {
             method: "GET",
             url: 'https://randomuser.me/api/',
             dataType: 'json',
-            success: function (data) {
+            success: data => {
 
-                const firstProfile = data.results.map(u => {
+                let mainProfile = data.results.map(u => {
                     return {
                         picture: u.picture.large,
                         firstName: u.name.first,
@@ -27,7 +27,7 @@ class APIManager {
                     }
                 })
 
-                this.data = firstProfile
+                this.data.mainProfile = mainProfile
             },
 
             error: function (xhr, text, error) {
@@ -38,20 +38,22 @@ class APIManager {
     }
 
     //Random User Generator API should run 6 times
+
     renderFriends() {
         $.ajax({
             method: "GET",
             url: 'https://randomuser.me/api/',
             dataType: 'json',
-            success: function (data) {
+            success: data => {
 
-                const friendsProfile = data.results.map(u => {
+                let friendsProfile = data.results.map(u => {
                     return {
                         firstName: u.name.first,
                         lastName: u.name.last,
                     }
                 })
-                this.data = friendsProfile
+
+                this.data.friendsProfile = friendsProfile
             },
 
             error: function (xhr, text, error) {
@@ -61,39 +63,16 @@ class APIManager {
         })
     }
 
-    //Random User Generator API should run 6 times
-    renderFriends() {
-        $.ajax({
-            method: "GET",
-            url: 'https://randomuser.me/api/',
-            dataType: 'json',
-            success: function (data) {
-
-                const friendsProfile = data.results.map(u => {
-                    return {
-                        firstName: u.name.first,
-                        lastName: u.name.last,
-                    }
-                })
-                this.data = friendsProfile
-            },
-
-            error: function (xhr, text, error) {
-                console.log(text)
-            }
-
-        })
-    }
-    
     // Kanya quote API
 
-    renderQuote(){
+    renderQuote() {
         $.ajax({
             method: "GET",
             url: 'https://api.kanye.rest',
             dataType: 'json',
-            success: function (data) {
-                const quote = data
+            success: data => {
+                this.data.quote = data
+
             },
 
             error: function (xhr, text, error) {
@@ -104,16 +83,19 @@ class APIManager {
     }
 
     // Pokemon API
-    renderPokemon(){
-        
-        const url = 'https://pokeapi.co/api/v2/pokemon/' + (Math.floor((Math.random() * 949) + 1))
+    renderPokemon() {
+
+        const url = 'https://pokeapi.co/api/v2/pokemon/' + (Math.floor((Math.random() * 400) + 1))
         $.ajax({
             method: "GET",
             url: url,
             dataType: 'json',
-            success: function (data) {
-                const name = data.species.name
-                const picture = data.sprites.front_default
+            success: data => {
+                const pokemon = {
+                    pokemonName: data.species.name,
+                    pokemonPicture: data.sprites.front_default
+                }
+                this.data.pokemon = pokemon
             },
 
             error: function (xhr, text, error) {
@@ -124,14 +106,14 @@ class APIManager {
     }
 
     // Baconipsum API
-    
-    renderMeat(){
+
+    renderMeat() {
         $.ajax({
             method: "GET",
             url: 'https://baconipsum.com/api/?type=all-meat&paras=1&start-with-lorem=1',
             dataType: 'json',
-            success: function (data) {
-                const aboutMe = data
+            success: data => {
+                this.data.aboutMe = data
             },
 
             error: function (xhr, text, error) {
@@ -140,7 +122,6 @@ class APIManager {
 
         })
     }
-
 
 
     // }

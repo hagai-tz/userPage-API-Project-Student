@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,22 +15,72 @@
 </head>
 
 <body>
-    <div class="container">	
-        <div class="user-container"></div>	
-        <div class="quote-container"></div>	
-        <div class="content-container">	
-            <div class="pokemon-container"></div>	
-            <div class="meat-container"></div>	
-        </div>	
-        <div class="friends">	
-            <h4>Friends</h4>	
-            <div class="friends-container">	
-            </div>	
-        </div>	
-        <div class="buttons">	
-            <button>Load User Data</button>	
-            <button>Display User</button>	
-        </div>	
+    <div class="container">
+        <div class="user-container">
+
+            <script id="user-template" type="text/x-handlebars-template">
+
+                    {{#each data.mainProfile}}
+                        <img src="{{picture}}" alt="" id="profile-pic">
+                        <h1 class="user-info">{{firstName}} {{lastName}}</h1>
+                        <h1 class="user-info">{{city}}, {{state}}</h1>
+                        
+                    {{/each}}
+
+            </script>
+        </div>
+
+        <script id="quote-template" type="text/x-handlebars-template">
+                    {{#each }}
+                        <div class="quote-container">
+                            <h3>Favorite quote</h3>
+                            <p>{{quote}}</p>
+                        </div>	
+                    {{/each}}
+            </script>
+
+        <div class="content-container">
+
+            <script id="pokemon-template" type="text/x-handlebars-template">
+                    {{#each }}
+                        <div class="pokemon-container">
+                        <img src="{{pokemonPicture}}" alt="" id="pokemon-image">
+                        <h2 id="pokemon-text">{{pokemonName}}</h2>
+                        </div>	
+                    {{/each}}
+            </script>
+
+            <script id="meat-template" type="text/x-handlebars-template">
+                    {{#each }}
+                        <div class="meat-container">
+                            <h4 class="meat-text">{{aboutMe}}</h4>
+                        </div>	
+                    {{/each}}
+            </script>
+
+        </div>
+
+        <div class="friends">
+            <h4>Friends</h4>
+
+            <script id="friends-template" type="text/x-handlebars-template">
+                    {{#each }}
+                        <div class="friends-container">	
+                            {{#each friends}}
+                            <ul>
+                                <li id="friends">{{firstName}} {{lastName}}</li>
+                            </ul>
+                            {{/each}}
+                        </div>
+                    {{/each}}
+            </script>
+
+        </div>
+
+        <div class="buttons">
+            <button>Load User Data</button>
+            <button>Display User</button>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
@@ -39,3 +90,24 @@
 </body>
 
 </html>
+
+
+<script id="first-template" type="text/x-handlebars-template">
+
+    {{#each posts}}
+
+        <div class="post">
+           <h2>{{text}}</h2>
+         
+            {{#each comments}}
+                <ul class="comments">
+                    <li id="{{id}}" class="comments">{{text}}</li>
+                </ul>
+            {{/each}}
+            <input type="text" placeholder="Got something to say?" id="comments-input">
+            <button ></button>
+        </div>
+
+    {{/each}}
+
+</script>
