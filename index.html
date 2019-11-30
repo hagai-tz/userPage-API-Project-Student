@@ -9,105 +9,93 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
 
 
 </head>
 
 <body>
     <div class="container">
-        <div class="user-container">
+        <div class="user-container"></div>
 
             <script id="user-template" type="text/x-handlebars-template">
 
-                    {{#each data.mainProfile}}
-                        <img src="{{picture}}" alt="" id="profile-pic">
-                        <h1 class="user-info">{{firstName}} {{lastName}}</h1>
-                        <h1 class="user-info">{{city}}, {{state}}</h1>
+                    {{#each users}}
+                        <img src={{picture}} alt="" id="profile-pic">
+                        <p class="user-info">{{firstName}} {{lastName}}</p>
+                        <p class="user-info"><span>{{city}}, {{state}}</span></p>
                         
                     {{/each}}
 
             </script>
-        </div>
+        
 
-        <script id="quote-template" type="text/x-handlebars-template">
-                    {{#each }}
-                        <div class="quote-container">
+        <div class="quote-container"></div>
+            <script id="quote-template" type="text/x-handlebars-template">
                             <h3>Favorite quote</h3>
-                            <p>{{quote}}</p>
-                        </div>	
-                    {{/each}}
+                            <p>{{quoteInfo}}</p> 
             </script>
+        
 
         <div class="content-container">
 
-            <script id="pokemon-template" type="text/x-handlebars-template">
-                    {{#each }}
-                        <div class="pokemon-container">
-                        <img src="{{pokemonPicture}}" alt="" id="pokemon-image">
-                        <h2 id="pokemon-text">{{pokemonName}}</h2>
-                        </div>	
-                    {{/each}}
-            </script>
+            <div class="pokemon-container"></div>
 
-            <script id="meat-template" type="text/x-handlebars-template">
-                    {{#each }}
-                        <div class="meat-container">
-                            <h4 class="meat-text">{{aboutMe}}</h4>
-                        </div>	
-                    {{/each}}
-            </script>
+                <script id="pokemon-template" type="text/x-handlebars-template">
 
+                        <img src={{pokemonInfo.pokemonPicture}} alt="" id="pokemon-image">
+                        <h2 id="pokemon-text">{{pokemonInfo.pokemonName}}</h2>
+                        
+            </script>
+            
+
+            <div class="meat-container"></div>
+
+                <script id="meat-template" type="text/x-handlebars-template">
+                        {{#each meatText}}
+                            <h4 class="meat-text">{{this}}</h4>
+                        {{/each}}
+            </script>
+            
         </div>
 
         <div class="friends">
             <h4>Friends</h4>
+            <div class="friends-container"></div>
 
+        </div>  
             <script id="friends-template" type="text/x-handlebars-template">
-                    {{#each }}
-                        <div class="friends-container">	
-                            {{#each friends}}
+                    {{#each users}}
+                        
                             <ul>
-                                <li id="friends">{{firstName}} {{lastName}}</li>
+                                <li>{{firstName}} {{lastName}}</li>
                             </ul>
-                            {{/each}}
-                        </div>
+                        
                     {{/each}}
             </script>
-
-        </div>
+        
 
         <div class="buttons">
-            <button>Load User Data</button>
-            <button>Display User</button>
+            <button id="load-user-data">Load User Data</button>
+            <button id="display-user">Display User</button>
+            <button id="save-user-page">Save User Page</button>
+            
+            <div><span>
+            <button id="load-user-page">Load User Page</button>
+            <select>
+                    <option value="volvo">Volvo</option>
+    
+            </select></span>
+                </div>
         </div>
-    </div>
+    
 
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+
     <script src="Renderer.js"></script>
     <script src="APIManager.js"></script>
     <script src="main.js"></script>
 </body>
 
 </html>
-
-
-<script id="first-template" type="text/x-handlebars-template">
-
-    {{#each posts}}
-
-        <div class="post">
-           <h2>{{text}}</h2>
-         
-            {{#each comments}}
-                <ul class="comments">
-                    <li id="{{id}}" class="comments">{{text}}</li>
-                </ul>
-            {{/each}}
-            <input type="text" placeholder="Got something to say?" id="comments-input">
-            <button ></button>
-        </div>
-
-    {{/each}}
-
-</script>

@@ -1,18 +1,33 @@
 // Create instances of your classes
 // Create the loadData and renderData functions - these should use the relevant instance
 
-const renderTest = new Renderer
-const test = new APIManager()
+const renderData = new Renderer()
+const apiCaller = new APIManager()
 
-// test.loadData()
-test.renderUsers()
-test.renderFriends()
-test.renderQuote()
-test.renderMeat()
-test.renderPokemon()
-console.log(test)
+const saveUserData = function(){
+    let savedUser = apiCaller.data
+    localStorage.setItem("user",JSON.stringify(savedUser))
+    console.log(savedUser)
+}
 
+const getUserData = function(){
+    let getUser = JSON.parse(localStorage.user || "[]")
+    renderData.render(getUser)
+}
 
-// renderTest.render(test)
+$('#load-user-data').on('click', function(){
+    apiCaller.loadData()
+})
 
-// debugger
+$('#display-user').on('click', function(){
+    renderData.render(apiCaller.data)
+})
+
+$('#save-user-page').on('click', function(){
+    saveUserData()
+
+})
+
+$('#load-user-page').on('click', function(){
+        getUserData()
+})

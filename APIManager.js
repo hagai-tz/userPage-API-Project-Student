@@ -5,12 +5,10 @@ class APIManager {
         this.data = {}
     }
 
-    // loadData() {
-    //you should make all your API requests here
-    //each request should update the `data` object accordingly
-
+    loadData() {
+        
     //Random User Generator API
-    renderUsers() {
+    // renderUsers() {
         $.ajax({
             method: "GET",
             url: 'https://randomuser.me/api/',
@@ -35,14 +33,14 @@ class APIManager {
             }
 
         })
-    }
+    // }
 
     //Random User Generator API should run 6 times
 
-    renderFriends() {
+    // renderFriends() {
         $.ajax({
             method: "GET",
-            url: 'https://randomuser.me/api/',
+            url: 'https://randomuser.me/api/?results=6',
             dataType: 'json',
             success: data => {
 
@@ -52,7 +50,6 @@ class APIManager {
                         lastName: u.name.last,
                     }
                 })
-
                 this.data.friendsProfile = friendsProfile
             },
 
@@ -61,17 +58,20 @@ class APIManager {
             }
 
         })
-    }
+    
+    // }
 
     // Kanya quote API
 
-    renderQuote() {
+    // renderQuote() {
         $.ajax({
             method: "GET",
             url: 'https://api.kanye.rest',
             dataType: 'json',
             success: data => {
-                this.data.quote = data
+                // debugger
+                this.data.quote = data.quote
+
 
             },
 
@@ -80,10 +80,10 @@ class APIManager {
             }
 
         })
-    }
+    // }
 
     // Pokemon API
-    renderPokemon() {
+    // renderPokemon() {
 
         const url = 'https://pokeapi.co/api/v2/pokemon/' + (Math.floor((Math.random() * 400) + 1))
         $.ajax({
@@ -91,7 +91,7 @@ class APIManager {
             url: url,
             dataType: 'json',
             success: data => {
-                const pokemon = {
+                let pokemon = {
                     pokemonName: data.species.name,
                     pokemonPicture: data.sprites.front_default
                 }
@@ -103,11 +103,11 @@ class APIManager {
             }
 
         })
-    }
+    // }
 
     // Baconipsum API
 
-    renderMeat() {
+    // renderMeat() {
         $.ajax({
             method: "GET",
             url: 'https://baconipsum.com/api/?type=all-meat&paras=1&start-with-lorem=1',
@@ -121,8 +121,10 @@ class APIManager {
             }
 
         })
+    // }
+
+    console.log(this.data)
+    
     }
 
-
-    // }
 }
