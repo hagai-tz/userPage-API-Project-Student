@@ -5,10 +5,7 @@ class APIManager {
         this.data = {}
     }
 
-    loadData() {
-        
-    //Random User Generator API
-    // renderUsers() {
+    fetchUser() {
         $.ajax({
             method: "GET",
             url: 'https://randomuser.me/api/',
@@ -33,6 +30,21 @@ class APIManager {
             }
 
         })
+    }
+
+    fetchFriends() {
+
+    }
+
+    fetchQuote() {
+        
+    }
+
+    loadData() {
+        fetchUser();
+    //Random User Generator API
+    // renderUsers() {
+       
     // }
 
     //Random User Generator API should run 6 times
@@ -52,6 +64,7 @@ class APIManager {
                 })
                 this.data.friendsProfile = friendsProfile
             },
+            
 
             error: function (xhr, text, error) {
                 console.log(text)

@@ -18,7 +18,7 @@
     <div class="container">
         <div class="user-container"></div>
 
-            <script id="user-template" type="text/x-handlebars-template">
+        <script id="user-template" type="text/x-handlebars-template">
 
                     {{#each users}}
                         <img src={{picture}} alt="" id="profile-pic">
@@ -28,43 +28,43 @@
                     {{/each}}
 
             </script>
-        
+
 
         <div class="quote-container"></div>
-            <script id="quote-template" type="text/x-handlebars-template">
+        <script id="quote-template" type="text/x-handlebars-template">
                             <h3>Favorite quote</h3>
                             <p>{{quoteInfo}}</p> 
             </script>
-        
+
 
         <div class="content-container">
 
             <div class="pokemon-container"></div>
 
-                <script id="pokemon-template" type="text/x-handlebars-template">
+            <script id="pokemon-template" type="text/x-handlebars-template">
 
                         <img src={{pokemonInfo.pokemonPicture}} alt="" id="pokemon-image">
                         <h2 id="pokemon-text">{{pokemonInfo.pokemonName}}</h2>
                         
             </script>
-            
+
 
             <div class="meat-container"></div>
 
-                <script id="meat-template" type="text/x-handlebars-template">
+            <script id="meat-template" type="text/x-handlebars-template">
                         {{#each meatText}}
                             <h4 class="meat-text">{{this}}</h4>
                         {{/each}}
             </script>
-            
+
         </div>
 
         <div class="friends">
             <h4>Friends</h4>
             <div class="friends-container"></div>
 
-        </div>  
-            <script id="friends-template" type="text/x-handlebars-template">
+        </div>
+        <script id="friends-template" type="text/x-handlebars-template">
                     {{#each users}}
                         
                             <ul>
@@ -73,29 +73,29 @@
                         
                     {{/each}}
             </script>
-        
+
 
         <div class="buttons">
             <button id="load-user-data">Load User Data</button>
             <button id="display-user">Display User</button>
             <button id="save-user-page">Save User Page</button>
-            
+
             <div><span>
-            <button id="load-user-page">Load User Page</button>
-            <select>
-                    <option value="volvo">Volvo</option>
-    
-            </select></span>
-                </div>
+                    <button id="load-user-page">Load User Page</button>
+                    <select>
+                        <option value="volvo">Volvo</option>
+
+                    </select></span>
+            </div>
         </div>
-    
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
 
-    <script src="Renderer.js"></script>
-    <script src="APIManager.js"></script>
-    <script src="main.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+
+        <script src="Renderer.js"></script>
+        <script src="APIManager.js"></script>
+        <script src="main.js"></script>
 </body>
 
 </html>
